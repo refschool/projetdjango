@@ -8,5 +8,6 @@ urlpatterns = [
     path('monform', views.monform),
     path('get_name', views.get_name),
     path('product_form', views.product_form),
+    path('editform/<str:pk>/', views.edit_product,name="edition"),
     path('thanks', views.thanks),
 ]

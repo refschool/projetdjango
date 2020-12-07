@@ -84,3 +84,25 @@ def product_form(request):
         form = ProductForm()
 
     return render(request, 'productform.html', {'form': form})
+
+def edit_product(request,pk):
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = MyProductForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            # process the data in form.cleaned_data as required
+            # ...
+            # redirect to a new URL:
+            return HttpResponseRedirect('/products/thanks')
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        print('my_recordxxx ',pk)
+        my_record = Product.objects.get(id=pk)
+        print('start printing my_recordxxx',my_record.name)
+        print('****')
+        form = MyProductForm(instance=my_record)
+
+    return render(request, 'editform.html', {'form': form})
