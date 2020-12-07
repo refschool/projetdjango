@@ -4,7 +4,34 @@
 XXX
 <form action="/products/monform" method="post">
     {% csrf_token %}
-    {{ form }}
+
+    {{ form.non_field_errors }}
+<div class="fieldWrapper">
+
+    {{ form.name.errors }}
+    {{ form.name.label_tag }}
+    {{ form.name }}<br>
+</div>
+
+
+<div class="fieldWrapper">
+        {{ form.price.label_tag }}
+    {{ form.price }}<br>
+</div>
+
+<div class="fieldWrapper">
+        {{ form.stock.label_tag }}
+    {{ form.stock }}<br>
+</div>
+
+<div class="fieldWrapper">
+        {{ form.image.label_tag }}
+    {{ form.image }}<br>
+</div>
+
+
+
+
     <input type="submit" value="Submit">
 </form>
 {% endblock %}
