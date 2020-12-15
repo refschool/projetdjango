@@ -10,4 +10,5 @@ urlpatterns = [
     path('add_product_form', views.add_product_form),
     path('editform/<str:pk>/', views.edit_product,name="edition"),#use model form
     path('thanks', views.thanks),
+    
 ]
