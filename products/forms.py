@@ -6,14 +6,14 @@ from django.forms import ModelForm
 class NameForm(forms.Form):
     your_name = forms.CharField(label='Your name', max_length=100)
 
-
+#not a model form
 class ProductForm(forms.Form):
     name = forms.CharField(max_length=50)
     price = forms.FloatField()
     stock = forms.IntegerField()
     image = forms.CharField(max_length=2000)
 
-
+#model form
 class MyProductForm(ModelForm):
     class Meta:
         model = Product

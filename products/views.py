@@ -4,7 +4,8 @@ from .models import Product
 
 from .forms import NameForm, ProductForm,MyProductForm
 
-# /products => index()
+# authentication tutorial
+# https://www.youtube.com/watch?v=dBctY3-Z5hY
 
 
 def index(request):
@@ -92,8 +93,9 @@ def edit_product(request,pk):
         form = MyProductForm(request.POST)
         # check whether it's valid:
         if form.is_valid():
-            # process the data in form.cleaned_data as required
-            # ...
+            # TODO process the data in form.cleaned_data as required
+            # name = form.cleaned_data['name']
+            # save https://www.youtube.com/watch?v=dBctY3-Z5hY
             # redirect to a new URL:
             return HttpResponseRedirect('/products/thanks')
 
