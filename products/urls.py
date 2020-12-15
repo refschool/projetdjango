@@ -7,7 +7,7 @@ urlpatterns = [
     path('add', views.add),
     path('monform', views.monform),# path(url,view.method)
     path('get_name', views.get_name),
-    path('product_form', views.product_form),
+    path('add_product_form', views.add_product_form),
     path('editform/<str:pk>/', views.edit_product,name="edition"),#use model form
     path('thanks', views.thanks),
 ]

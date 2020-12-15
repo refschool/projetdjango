@@ -6,7 +6,8 @@ from .forms import NameForm, ProductForm,MyProductForm
 
 # authentication tutorial
 # https://www.youtube.com/watch?v=dBctY3-Z5hY
-
+#file upload tutorial
+#https://www.youtube.com/watch?v=v5FWAxi5QqQ
 
 def index(request):
     products = Product.objects.all()
@@ -68,11 +69,11 @@ def thanks(request):
     return HttpResponse('Merci')
 
 
-def product_form(request):
+def add_product_form(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
-        form = ProductForm(request.POST)
+        form = MyProductForm(request.POST)
         # check whether it's valid:
         if form.is_valid():
             # process the data in form.cleaned_data as required
@@ -82,7 +83,7 @@ def product_form(request):
 
     # if a GET (or any other method) we'll create a blank form
     else:
-        form = ProductForm()
+        form = MyProductForm()
 
     return render(request, 'productform.html', {'form': form})
 
