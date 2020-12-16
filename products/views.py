@@ -8,6 +8,7 @@ from .forms import NameForm, ProductForm,MyProductForm
 # https://www.youtube.com/watch?v=dBctY3-Z5hY
 #file upload tutorial
 #https://www.youtube.com/watch?v=v5FWAxi5QqQ
+#https://www.youtube.com/watch?v=KQJRwWpP8hs  BETTER?
 
 def index(request):
     products = Product.objects.all()
@@ -73,11 +74,17 @@ def add_product_form(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
-        form = MyProductForm(request.POST)
+        form = MyProductForm(request.POST, request.FILES)
+        print('in the add 1a ******')
+        print(request.POST)
+        print('in the add 1b ******')
         # check whether it's valid:
         if form.is_valid():
             # process the data in form.cleaned_data as required
-            # ...
+            print('in the add 2 ******')
+            product = form.save(commit=False)
+            print('*********',request.FILES)
+            product.save()
             # redirect to a new URL:
             return HttpResponseRedirect('/products/thanks')
 
@@ -85,16 +92,21 @@ def add_product_form(request):
     else:
         form = MyProductForm()
 
-    return render(request, 'productform.html', {'form': form})
+    return render(request, 'myproductform.html', {'form': form})
 
 def edit_product(request,pk):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = MyProductForm(request.POST)
+
         # check whether it's valid:
         if form.is_valid():
             # TODO process the data in form.cleaned_data as required
+            product = form.save()
+
+            # commit=False tells Django that "Don't send this to database yet.
+            # I have more things I want to do with it."
             # name = form.cleaned_data['name']
             # save https://www.youtube.com/watch?v=dBctY3-Z5hY
             # redirect to a new URL:

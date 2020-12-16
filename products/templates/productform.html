@@ -2,7 +2,7 @@
 
 {% block contenu %}
 
-<form action="/products/productform" method="post">
+<form action="/products/add_product_form" method="post">
     {% csrf_token %}
     {{ form }}
     <input type="submit" value="Submit">
