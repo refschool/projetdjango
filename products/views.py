@@ -12,6 +12,8 @@ from .forms import NameForm, ProductForm,MyProductForm
 
 def index(request):
     products = Product.objects.all()
+    print('***products')
+    print(products)
     return render(request, 'index.html', { 'products': products })
 
 #https://www.youtube.com/watch?v=qwE9TFNub84
@@ -33,18 +35,18 @@ def monform(request):
 
     return render(request, 'myproductform.html', {'form': form})
 
-def add(request):
+"""def add(request):
     p = Product()
     p.name = "Test Nom"
     p.price = 20.0
     p.stock = 10
     p.image = 'http://'
     p.save()
-    return HttpResponse('Nouveau produit inséré')
+    return HttpResponse('Nouveau produit inséré')"""
 
 
-def new(request):
-    return HttpResponse('Nouveau produit')
+"""def new(request):
+    return HttpResponse('Nouveau produit')"""
 
 
 def get_name(request):
