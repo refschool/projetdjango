@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from user_example import views
+#from user_example.views import index
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -24,6 +25,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('register/', views.register, name='register'),
     path('admin/', admin.site.urls),
     path('products/', include('products.urls')),
     path('accounts/', include('django.contrib.auth.urls'))
