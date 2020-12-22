@@ -7,10 +7,14 @@
 <body>
 <h1>Dans le user example </h1>
 
-{{request.user.username}}
-{{request.user.password}}
 
+{% if user.is_authenticated %}
 
+Votre nom  : {{request.user.username}}<br>
+<a href="{% url 'logout' %}">Se déconnecter</a>
+{% else %}
+Vous n'êtes pas loggé
+{% endif %}
 
 </body>
 </html>
