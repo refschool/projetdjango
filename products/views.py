@@ -21,37 +21,12 @@ def index(request):
     return render(request, 'index.html', { 'products': products })
 
 #https://www.youtube.com/watch?v=qwE9TFNub84
-def monform(request):
-    # if this is a POST request we need to process the form data
-    if request.method == 'POST':
-        # create a form instance and populate it with data from the request:
-        form = MyProductForm(request.POST)
-        # check whether it's valid:
-        if form.is_valid():
-            # process the data in form.cleaned_data as required
-            form.save()
-            # redirect to a new URL:
-            return HttpResponseRedirect('/products/thanks')
 
-    # if a GET (or any other method) we'll create a blank form
-    else:
-        form = MyProductForm()
-
-    return render(request, 'myproductform.html', {'form': form})
-
-"""def add(request):
-    p = Product()
-    p.name = "Test Nom"
-    p.price = 20.0
-    p.stock = 10
-    p.image = 'http://'
-    p.save()
-    return HttpResponse('Nouveau produit inséré')"""
-
-
-
-def thanks(request):
-    return HttpResponse('Merci')
+def liste(request):
+    products = Product.objects.all()
+    print('***products')
+    print(products)
+    return render(request, 'liste.html', { 'products': products })
 
 
 def add_product_form(request):
@@ -105,3 +80,6 @@ def edit_product(request,pk):
         form = MyProductForm(instance=my_record)
 
     return render(request, 'editform.html', {'form': form})
+
+def thanks(request):
+    return HttpResponse('Merci')
